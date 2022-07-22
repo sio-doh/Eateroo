@@ -33,7 +33,7 @@ router.post('/signup', (req, res, next) => {
 
     // Check users collection if a user with the same email already exists 
     User.findOne({ email })
-    .then((foundOne) => {
+    .then((foundUser) => {
         // if user with same email already exists, send an error response 
         if (foundUser) {
             res.status(400).json({ message: "User already exists." }); 
@@ -69,6 +69,7 @@ router.post('/signup', (req, res, next) => {
 // POST /auth/login 
 // Verifies email and password and returns a JWT 
 router.post('/login', (req, res, next) => {
+    console.log("received login request. is this executed?????")
     const { email, password } = req.body;
 
     // check if email or password provided are as empty strings 
@@ -81,6 +82,7 @@ router.post('/login', (req, res, next) => {
     User.findOne({ email })
     .then((foundUser) => {
         if (!foundUser) {
+            console.log("did not find user")
             // if user is not found, send an error response 
             res.status(401).json({ message: "User not found." }); 
             return;
@@ -106,7 +108,8 @@ router.post('/login', (req, res, next) => {
             // send token as response 
             res.status(200).json({ authToken: authToken });
         } 
-        else {
+        else { 
+            console.log("user here")
             res.status(401).json({ message: "Unable to authenticate the user." }); 
         }
 
