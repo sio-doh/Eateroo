@@ -68,8 +68,9 @@ function AuthProviderWrapper(props) {
         authenticateUser();
     }, []);
 
+
     return (
-        <AuthContext.Provider value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser }}>
+        <AuthContext.Provider value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser, logOutUser }}>
             {props.children}
         </AuthContext.Provider>
     )

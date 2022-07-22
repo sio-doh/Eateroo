@@ -1,24 +1,41 @@
 import { response } from "express";
+import axios from "axios"; 
+import { useState } from "react";
 
-const handleSubmit = (e) => {
-    e.preventDefault(); 
-    const requestBody = { menu, item}; 
 
-    // get token from localStorage 
-    const storedToken = localStorage.getItem("authToken"); 
+function CartView(props) {
 
-    // send token through request "Authorization" Headers 
-    axios
-    .post(
-        `${API_URL}/api/projects`, 
-        requestBody, 
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-    )
-    .then((response) => {
-        // reset state 
-        setMenu(""); 
-        setItem("");
-        props.refreshProjects();
-    })
-    .catch((error) => console.log(error));
-};
+    const [menu, setMenu] = useState([]);  
+    const [item, setItem] = useState([]);  
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); 
+        const requestBody = { menu, item}; 
+
+        // get token from localStorage 
+        const storedToken = localStorage.getItem("authToken"); 
+
+        // send token through request "Authorization" Headers 
+        axios
+        .post(
+            `/api/projects`, 
+            requestBody, 
+            { headers: { Authorization: `Bearer ${storedToken}` } }
+        )
+        .then((response) => {
+            // reset state 
+            setMenu(""); 
+            setItem("");
+            props.refreshProjects();
+        })
+        .catch((error) => console.log(error));
+    }
+
+    return (
+        <>
+            
+        </>
+    );
+}; 
+
+export default CartView;

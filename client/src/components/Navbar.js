@@ -17,8 +17,8 @@ function Navbar() {
 
             {isLoggedIn && (
                 <>
-                    <Link to="/restaurants">
-                        <button>restaurantList</button>
+                    <Link to="/restaurant">
+                        <button>Restaurants</button>
                     </Link> 
             
                     {/*     UPDATE    */} 
