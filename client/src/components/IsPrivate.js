@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context"; 
 import { Navigate } from "react-router-dom"; 
 
-function IsPrivate( { children }) {
+export default function IsPrivate( { children }) {
     const { isLoggedIn, isLoading } = useContext(AuthContext); 
 
     // if authentication is still loading 
@@ -16,5 +16,3 @@ function IsPrivate( { children }) {
         return children;
     }
 }
-
-export default IsPrivate; 

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 
-function CartView(props) {
+export default function CartView(props) {
 
     const [menu, setMenu] = useState([]);
     const [item, setItem] = useState([]);
@@ -36,5 +36,3 @@ function CartView(props) {
         </>
     );
 };
-
-export default CartView;

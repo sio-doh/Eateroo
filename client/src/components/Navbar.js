@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react"; 
 import { AuthContext } from "../context/auth.context"; 
 
-function Navbar() {
+export default function Navbar() {
     // subscribe to AuthContext to gain access to values 
     // from AuthContext.Provider 'value' prop 
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext); 
@@ -36,5 +36,3 @@ function Navbar() {
         </nav>
     );
 }
-
-export default Navbar;

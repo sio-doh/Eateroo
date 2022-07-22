@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useParams } from 'react-router-dom'; 
 
 
-function Menu() {
+export default function Menu() {
     const params = useParams()
     const id = params.id 
     const [menu, setMenu] = useState([]);  
@@ -15,7 +15,7 @@ function Menu() {
         // send token through request "Authorization" Headers 
         axios
             // API_URL=use relative path
-            .get(`/api/projects/${id}`,
+            .get(`/api/restaurants/${id}`,
             { headers: { Authorization: `Bearer: ${storedToken}` } }
         )
         .then((response) => {
@@ -31,5 +31,3 @@ function Menu() {
         </>
     );
 }; 
-
-export default Menu;

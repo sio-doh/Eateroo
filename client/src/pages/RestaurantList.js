@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
 
-function RestaurantList() {
+export default function RestaurantList() {
     const [restaurant, setRestaurant] = useState([]);
 
     const getAllRestaurants = () => {
         // get token from localStorage 
         const storedToken = localStorage.getItem("authToken");
 
-        // send token trhough request "Authorization" Headers 
+        // send token through request "Authorization" Headers 
         axios
             .get(
                 `/api/resturant`,
@@ -24,5 +24,3 @@ function RestaurantList() {
         </>
     );
 };
-
-export default RestaurantList;

@@ -2,9 +2,8 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-const API_URL = "http://localhost:5005";
 
-function Login(props) {
+export default function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(undefined);
@@ -18,7 +17,7 @@ function Login(props) {
         e.preventDefault();
         const requestBody = { email, password };
 
-        axios.post(`${API_URL}/auth/login`, requestBody)
+        axios.post(`/auth/login`, requestBody)
             .then((response) => {
                 // request to server's endpoint '/auth/login' returns a response 
                 // with JWT string -> response.data.authToken 
@@ -65,5 +64,3 @@ function Login(props) {
         </div>
     )
 }
-
-export default Login;
