@@ -7,8 +7,8 @@ require("./config")(app);
 
 
 // 👇 Start handling routes here
-const allRoutes = require("./routes/index.routes");
-app.use("/api", allRoutes);
+const allRoutes = require("./routes/eateroo");
+app.use("/api/eateroo", allRoutes);
 
 const authRouter = require("./routes/auth.routes"); 
 app.use("/auth", authRouter);

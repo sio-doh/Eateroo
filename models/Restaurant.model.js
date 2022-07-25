@@ -8,8 +8,8 @@ const restaurantSchema = new Schema(
         },
         restaurantLocation: {
             latitude: [Number], 
-            longitude: [Number], 
-            required: true
+            longitude: [Number] 
+            // required: true
         } 
     },
 );
