@@ -1,11 +1,10 @@
+import React from 'react'
 import { Link } from 'react-router-dom'; 
 
 export default function Home() {
-
     return (
-        <>
-            <h2> <Link to='/restaurants'>Browse Restaurants</Link></h2> 
-
-        </>
+        <div>
+            <h2> <Link to='/restaurant'>Restaurants</Link></h2>
+        </div>
     );
-};
+}
