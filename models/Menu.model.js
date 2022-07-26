@@ -11,7 +11,7 @@ const menuSchema = new Schema(
             required: true
         },
         menuPrice: {
-            type: String, 
+            type: Number, 
             required: true
         },  
         menuImg: {

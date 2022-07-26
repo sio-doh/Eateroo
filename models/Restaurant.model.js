@@ -10,7 +10,12 @@ const restaurantSchema = new Schema(
             latitude: [Number], 
             longitude: [Number] 
             // required: true
-        } 
+        }, 
+        // connection from restaurant to menu
+        menu: {
+            type: Schema.Types.ObjectId, 
+            ref: "menus", 
+        }
     },
 );
 
