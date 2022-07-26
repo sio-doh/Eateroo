@@ -5,12 +5,13 @@ const menuItem = require("../models/menuItem.model");
 // const cartView = require("../models/Cart.model");
 const router = require("express").Router();
 
+// WIP - use populate NOT find() 
 // get all the restaurants
-router.get("/", (req, res, next) => { 
+router.get("/restaurants", (req, res, next) => { 
   console.log("eateroo??")
   Restaurant.find()
     .then(restaurant => {
-      Menu.find()
+      Menu.find() // use POPULATE NOT FIND HERE
         .then(menu => {
           console.log("eateroo menuItem??")
           menuItem.find()
@@ -23,15 +24,6 @@ router.get("/", (req, res, next) => {
     })
     .catch(err => next(err))
 });
-// get all the menus
-// router.get("/menu", (req, res, next) => { 
-//   console.log("eateroo??")
-//   Menu.find()
-//     .then(eateroo => {
-//       res.status(200).json(eateroo)
-//     })
-// });
-
 // get all the menuItems
 // router.get("/menuItem", (req, res, next) => { 
 //   console.log("eateroo menuItem??")
@@ -42,36 +34,24 @@ router.get("/", (req, res, next) => {
 // });
 
 // create a restaurant selection
-router.post("/", (req, res, next) => {
-  const {restaurantName, restaurantLocation, menu} = req.body 
+router.post("/restaurants", (req, res, next) => {
+  const {restaurantName, restaurantLocation, menuName, menuDescription, menuPrice, menuImg, menuItemName, menuItemImg} = req.body 
   console.log("POST the burger", req.body)
-  Restaurant.create({restaurantName, restaurantLocation})
-    .then(restaurant => {
-      return Menu.create({menu, menuName, menuDescription, menuPrice, menuImg})
-    })
-    .then(menu => {
-      console.log("POST the menuItem", req.body)
-      return menuItem.create({menuItemName, menuItemImg})
-      
-    })
+  menuItem.create({menuItemName, menuItemImg})
     .then(menuItem => {
-      res.status(201).json(menuItem)
-      // res.status(201).json(menu)
-      // res.status(201).json(restaurant)
+      console.log(menuItem) 
+      return Menu.create({menuItem: menuItem._id, menuName, menuDescription, menuPrice, menuImg})
+    })
+    .then(menu => { 
+      console.log(menu)
+      return Restaurant.create({menu: menu._id, restaurantName, restaurantLocation})
+    })
+    .then(restaurant => {
+      console.log("POST the menuItem", req.body)
+      res.status(201).json(restaurant)
     })
     .catch(err => next(err))
 }); 
-// create a menu selection
-// router.post("/restaurant", (req, res, next) => {
-//   const {menuName, menuDescription, menuPrice, menuImg} = req.body 
-//   console.log("POST the menu", req.body)
-//   Menu.create({menuName, menuDescription, menuPrice, menuImg})
-//     .then(menu => {
-//       res.status(201).json(menu)
-//     })
-//     .catch(err => next(err))
-// }); 
-
 // create a menuItem
 // router.post("/menuItem", (req, res, next) => {
 //   const {menuItemName, menuItemImg} = req.body 
@@ -84,7 +64,7 @@ router.post("/", (req, res, next) => {
 // });
 
 // get a specific restaurant 
-router.get("/restaurant/:id", (req, res, next) => {
+router.get("/restaurants/:id", (req, res, next) => {
   console.log("eateroo number two??")
   Restaurant.findById(req.params.id)
     .then(restaurant => { 
@@ -93,8 +73,7 @@ router.get("/restaurant/:id", (req, res, next) => {
           console.log("eateroo menuItem number two???")
           menuItem.findById(req.params.id)
             .then(menuItem => {
-              // check for a valid mongoobject id 
-              // mongoose.Types.ObjectId.isValid(<id>)
+              // check for valid mongoobject id - mongoose.Types.ObjectId.isValid(<id>)
               if (!menuItem) {
                 res.status(404).json(menuItem) 
               } else {
@@ -114,28 +93,12 @@ router.get("/restaurant/:id", (req, res, next) => {
       }
     })
 }); 
-// get a specific menu 
-// router.get("/menu/:id", (req, res, next) => {
-//   console.log("eateroo menu number two??")
-//   Menu.findById(req.params.id)
-//     .then(menu => { 
-//       // check for a valid mongoobject id 
-//       // mongoose.Types.ObjectId.isValid(<id>)
-//       if (!menu) {
-//         res.status(404).json(menu)
-//       } else {
-//         res.status(200).json(menu)
-//       }
-//     })
-// }); 
-
 // get a specific menuItem 
 // router.get("/menuItem/:id", (req, res, next) => {
 //   console.log("eateroo menuItem number two??")
 //   menuItem.findById(req.params.id)
 //     .then(menuItem => { 
-//       // check for a valid mongoobject id 
-//       // mongoose.Types.ObjectId.isValid(<id>)
+//       // check for a valid mongoobject id - mongoose.Types.ObjectId.isValid(<id>)
 //       if (!menuItem) {
 //         res.status(404).json(menuItem)
 //       } else {
@@ -145,7 +108,7 @@ router.get("/restaurant/:id", (req, res, next) => {
 // });
 
 // update restaurant 
-router.put("/restaurant/:id", (req, res, next) => {
+router.put("/restaurants/:id", (req, res, next) => {
   const {restaurantName, restaurantLocation} = req.body 
   Restaurant.findByIdAndUpdate(req.params.id, {
     restaurantName, 
@@ -172,21 +135,6 @@ router.put("/restaurant/:id", (req, res, next) => {
   })
   .catch(err => next(err))
 }); 
-// update menu 
-// router.put("/menu/:id", (req, res, next) => {
-//   const {menuName, menuDescription, menuPrice, menuImg} = req.body 
-//   Menu.findByIdAndUpdate(req.params.id, {
-//     menuName, 
-//     menuDescription, 
-//     menuPrice, 
-//     menuImg
-//   }, {new: true})
-//   .then(updatedMenu => {
-//     res.status(200).json(updatedMenu)
-//   })
-//   .catch(err => next(err))
-// });
-
 // update menuItem 
 // router.put("/menuItem/:id", (req, res, next) => {
 //   const {menuItemName, menuItemImg} = req.body 
@@ -201,7 +149,7 @@ router.put("/restaurant/:id", (req, res, next) => {
 // });
 
 // delete restaurant
-router.delete("/restaurant/:id", (req, res, next) => {
+router.delete("/restaurants/:id", (req, res, next) => {
   Restaurant.findByIdAndDelete(req.params.id)
   .then(() => {
     Menu.findByIdAndDelete(req.params.id) 
@@ -215,15 +163,7 @@ router.delete("/restaurant/:id", (req, res, next) => {
     res.status(200).json({ message: 'restaurant deleted'})
   })
   .catch(err => next(err))
-})
-// router.delete("/menu/:id", (req, res, next) => {
-//   Menu.findByIdAndDelete(req.params.id)
-//   .then(() => {
-//     res.status(200).json({ message: 'menu deleted'})
-//   })
-//   .catch(err => next(err))
-// })
-
+});
 // router.delete("/menuItem/:id", (req, res, next) => {
 //   menuItem.findByIdAndDelete(req.params.id)
 //   .then(() => {
@@ -272,7 +212,6 @@ router.delete("/restaurant/:id", (req, res, next) => {
 //       }
 //     })
 // }); 
-
 
 
 module.exports = router;

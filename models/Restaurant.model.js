@@ -9,7 +9,6 @@ const restaurantSchema = new Schema(
         restaurantLocation: {
             latitude: [Number], 
             longitude: [Number] 
-            // required: true
         }, 
         // connection from restaurant to menu
         menu: {
