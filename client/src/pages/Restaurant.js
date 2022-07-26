@@ -7,9 +7,9 @@ export default function Home() {
     const id = params.id 
 
     return (
-        <>
-            <h2> <Link to='/restaurantList'>Select from Restaurants</Link></h2> 
+        <div>
+            <h2> <Link to='/restaurantList'>Browse Restaurants</Link></h2> 
 
-        </>
+        </div>
     );
-};// params id
+};  // params id
