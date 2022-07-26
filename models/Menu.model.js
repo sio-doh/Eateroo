@@ -11,13 +11,18 @@ const menuSchema = new Schema(
             required: true
         },
         menuPrice: {
-            type: String, 
+            type: Number, 
             required: true
         },  
         menuImg: {
             type: String, 
             required: true
-        } 
+        }, 
+        // connection from menu to menuItem <== TODO
+        // menuItem: {
+        //     type: Schema.Types.ObjectId, 
+        //     ref: "items", 
+        // }
     },
 );
 

@@ -15,7 +15,6 @@ export default function Menu() {
 
         // send token through request "Authorization" Headers 
         axios
-            // API_URL=use relative path
             .get(`/api/restaurants/${id}`,
             { headers: { Authorization: `Bearer: ${storedToken}` } }
         )
