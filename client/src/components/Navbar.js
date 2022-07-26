@@ -17,9 +17,9 @@ export default function Navbar() {
 
             {isLoggedIn && (
                 <>
-                    <Link to="/restaurant">
+                    {/* <Link to="/restaurant">
                         <button>Restaurants</button>
-                    </Link> 
+                    </Link>  */}
             
                     {/*     UPDATE    */} 
                     <button onClick={logOutUser}>Logout</button> 

@@ -1,6 +1,7 @@
 import axios from "axios"; 
 import { useState } from "react";
 import { useParams } from 'react-router-dom'; 
+import { Link } from 'react-router-dom'; 
 
 
 export default function Menu() {
@@ -25,8 +26,8 @@ export default function Menu() {
     }
 
     return (
-        <>
-            
-        </>
+        <div>
+            <h2> <Link to='/order-complete'>Complete Order</Link></h2> 
+        </div>
     );
 }; 
