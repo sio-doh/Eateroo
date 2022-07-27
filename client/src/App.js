@@ -2,8 +2,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Restaurant from './pages/Restaurant';
-import RestaurantList from './pages/RestaurantList';
+import Restaurants from './pages/Restaurants';
 import Menu from './pages/Menu';
 // import CartView from './pages/CartView';
 import OrderComplete from './pages/OrderComplete';
@@ -24,9 +23,8 @@ function App() {
         <Route path="/signup" element={<IsAnon> <Signup /> </IsAnon>} />
         <Route path="/login" element={<IsAnon> <Login /> </IsAnon>} />
 
-        <Route path="/restaurant" element={<IsPrivate> <Restaurant /> </IsPrivate>} />
-        <Route path="/restaurant/:id" element={<IsPrivate> <Restaurant /> </IsPrivate>} />
-        <Route path="/restaurantList" element={<IsPrivate> <RestaurantList /> </IsPrivate>} />
+        <Route path="/restaurants" element={<IsPrivate> <Restaurants /> </IsPrivate>} />
+        <Route path="/restaurants/:id" element={<IsPrivate> <Restaurants /> </IsPrivate>} />
 
         {/* <Route path="/projects" element={ <ProjectListPage /> } />
         <Route path="/projects/:id" element={ <ProjectDetailsPage /> } /> 

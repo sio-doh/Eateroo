@@ -60,8 +60,22 @@ export default function Login(props) {
             </form>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
 
+            {/* <Form onSubmit={handleLoginSubmit}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Control type="email" name="email" value={email} onChange={handleEmail} />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control type="password" name="password" value="{password}" onChange={handlePassword} />
+                </Form.Group>                 
+                
+                <Button variant="primary" type="submit"> Login </Button>
+            </Form>  */}
+
             <p>Don't have an account yet?</p>
-            <Link to={"/signup"}>Sign Up</Link>
+            <Link className="link" to={"/signup"}>Sign Up</Link>
         </div>
     )
 }

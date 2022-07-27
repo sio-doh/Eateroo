@@ -5,33 +5,25 @@ const menuItem = require("../models/menuItem.model");
 // const cartView = require("../models/Cart.model");
 const router = require("express").Router();
 
-// WIP - use populate NOT find() 
 // get all the restaurants
 router.get("/restaurants", (req, res, next) => { 
   console.log("eateroo??")
   Restaurant.find()
-    .then(restaurant => {
-      Menu.find() // use POPULATE NOT FIND HERE
-        .then(menu => {
-          console.log("eateroo menuItem??")
-          menuItem.find()
-            .then(eateroo => {
-              res.status(200).json(eateroo)
-            })
-          // res.status(200).json(menu)
-        })      
-      // res.status(200).json(restaurant)
+    // .populate("menu")
+    // .populate("menuItem")
+    .populate({
+      path: "menu",
+      populate: {
+        path: "menuItems"
+      }
     })
+    .then(restaurants => {
+      console.log("eateroo restaurants??")
+      res.status(200).json(restaurants)
+    }) 
     .catch(err => next(err))
 });
-// get all the menuItems
-// router.get("/menuItem", (req, res, next) => { 
-//   console.log("eateroo menuItem??")
-//   menuItem.find()
-//     .then(eateroo => {
-//       res.status(200).json(eateroo)
-//     })
-// });
+
 
 // create a restaurant selection
 router.post("/restaurants", (req, res, next) => {

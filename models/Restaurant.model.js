@@ -13,7 +13,7 @@ const restaurantSchema = new Schema(
         // connection from restaurant to menu
         menu: {
             type: Schema.Types.ObjectId, 
-            ref: "menus", 
+            ref: "Menu", 
         }
     },
 );

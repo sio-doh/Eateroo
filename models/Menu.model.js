@@ -19,10 +19,15 @@ const menuSchema = new Schema(
             required: true
         }, 
         // connection from menu to menuItem <== TODO
-        // menuItem: {
-        //     type: Schema.Types.ObjectId, 
-        //     ref: "items", 
-        // }
+        menuItems: [
+            {
+                menuItem: {
+                type: Schema.Types.ObjectId,
+                ref: "MenuItem",
+            },
+                // description: String,
+            },
+        ],
     },
 );
 

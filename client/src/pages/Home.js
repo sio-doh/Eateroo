@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Home() {
     return (
         <div>
-            <h2> <Link to='/restaurants'>Browse Restaurants</Link></h2> 
+            <h2> <Link className="link" to='/restaurant'>Browse Restaurants</Link></h2> 
         </div>
     );
 }
