@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-// import Button from 'react-bootstrap/Button';
-// import Form from 'react-bootstrap/Form';
+// import { Form , Button } from 'react-bootstrap';
 
 export default function Signup(props) {
     const [email, setEmail] = useState("");
@@ -19,7 +18,6 @@ export default function Signup(props) {
         e.preventDefault();
         // create an object representing request body 
         const requestBody = { email, password, name };
-
         // make an axios request to the API 
         // if POST request is successful redirect to login page 
         // if request resolves with an error, set error message in the state 
@@ -64,16 +62,15 @@ export default function Signup(props) {
 
                 <button type="submit">Sign Up</button>
             </form> 
-
             {/* <Form onSubmit={handleSignupSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email:</Form.Label>
-                    <Form.Control type="email" name="email" value={email} onChange={handleEmail} placeholder="Enter email" />
+                    <Form.Control type="email" name="email" value={email} onChange={handleEmail}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password:</Form.Label>
-                    <Form.Control type="password" name="password" value="{password}" onChange={handlePassword} />
+                    <Form.Control type="password" name="password" value={password} onChange={handlePassword} />
                 </Form.Group> 
                                 
                 <Form.Group className="mb-3" controlId="formBasicName">

@@ -18,16 +18,6 @@ const menuSchema = new Schema(
             type: String, 
             required: true
         }, 
-        // connection from menu to menuItem <== TODO
-        menuItems: [
-            {
-                menuItem: {
-                type: Schema.Types.ObjectId,
-                ref: "MenuItem",
-            },
-                // description: String,
-            },
-        ],
     },
 );
 

@@ -38,14 +38,14 @@
 }
 
 body {
-  background-color: #551a8b;
+  background-color: #00ccbb;
 }
 
 p, .link {
   color: #fff;
 }
 
-.Home {
+.Home, .Menu, .Restaurants {
   display: flex;
   align-items: center;
 }

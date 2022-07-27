@@ -1,32 +1,36 @@
 import axios from "axios"; 
 import { useState, useEffect } from "react";
 import { useParams, Link } from 'react-router-dom'; 
+
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-export default function Menu() {
+// import { Card, Col, Row } from 'react-bootstrap';
+
+export default function Menus() {
     const params = useParams()
     const id = params.id 
-    const [menu, setMenu] = useState([]);  
+    const [menus, setMenus] = useState([]);  
 
     useEffect(() => {
         // get token from localStorage 
         const storedToken = localStorage.getItem("authToken");
         
-        axios.get(`/api/eateroo/menu/${id}`, { headers: { Authorization: `Bearer ${storedToken}` }}) 
+        axios.get(`/api/eateroo/menus/${id}`, { headers: { Authorization: `Bearer ${storedToken}` }}) 
         .then((response) => {
             console.log(response.data)
             // set state of characters
             const oneMenu = response.data; 
-            setMenu(oneMenu);
+            setMenus(oneMenu);
         })
         .catch(error => console.log(error))
     }, [])
 
     return (
         <div>
+            <br></br><br></br>
             <h2> <Link className="link" to='/order-complete'>Complete Order</Link></h2> 
-
+            <br></br>
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
