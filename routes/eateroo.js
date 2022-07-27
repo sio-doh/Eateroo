@@ -19,13 +19,9 @@ router.get("/restaurants", (req, res, next) => {
 
 // create a restaurant selection
 router.post("/restaurants", (req, res, next) => {
-  const {restaurantName, restaurantLocation, menuName, menuDescription, menuPrice, menuImg} = req.body 
+  const {restaurantName, restaurantLocation} = req.body 
   console.log("POST the burger", req.body)
-  Menus.create({menuName, menuDescription, menuPrice, menuImg})
-    .then(menus => { 
-      console.log(menus)
-      return Restaurant.create({menus: menus._id, restaurantName, restaurantLocation})
-    })
+  Restaurant.create({restaurantName, restaurantLocation})
     .then(restaurant => {
       console.log("POST the menus", req.body)
       res.status(201).json(restaurant)
@@ -94,8 +90,14 @@ router.delete("/restaurants/:id", (req, res, next) => {
 // create a list of menus in restaurant 
 router.post("/restaurants/:id/menus", (req, res, next) => {
   const id = req.params.id
-  const {menu} = req.body 
+  const {menuName, menuDescription, menuPrice, menuImg} = req.body 
   console.log("POST the list of menus", req.body)
+  let menu = {
+    menuName, 
+    menuDescription, 
+    menuPrice, 
+    menuImg
+  }
   Restaurant.findByIdAndUpdate(id, {$push: {menus: menu} })
     .then((restaurant) => {
       console.log("POST the list of menus", req.body)
