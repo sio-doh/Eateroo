@@ -13,11 +13,22 @@ const restaurantSchema = new Schema(
         // connection from restaurant to menu
         menus: [
             {
-                menu: {
-                type: Schema.Types.ObjectId,
-                ref: "Menu",
-            },
-                // description: String,
+                menuName: {
+                    type: String,
+                    required: true
+                },
+                menuDescription: {
+                    type: String, 
+                    required: true
+                },
+                menuPrice: {
+                    type: Number, 
+                    required: true
+                },  
+                menuImg: {
+                    type: String, 
+                    required: true
+                },
             },
         ],
     },
