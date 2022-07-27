@@ -1,7 +1,9 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
+import { AuthContext } from "../context/auth.context"; 
+// import { Form , button } from 'react-bootstrap';
+
 
 export default function Login(props) {
     const [email, setEmail] = useState("");
@@ -17,7 +19,6 @@ export default function Login(props) {
         e.preventDefault();
         const requestBody = { email, password };
 
-        // `/auth/login`
         axios.post(`http://localhost:5005/auth/login`, requestBody)
             .then((response) => {
                 // request to server's endpoint '/auth/login' returns a response 
@@ -58,10 +59,23 @@ export default function Login(props) {
 
                 <button type="submit">Login</button>
             </form>
+            {/* <Form onSubmit={handleLoginSubmit}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Input type="email" name="email" value={email} onChange={handleEmail} />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Input type="password" name="password" value={password} onChange={handlePassword} />
+                </Form.Group>                 
+                
+                <button variant="primary" type="submit"> Login </button>
+            </Form>  */}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
 
             <p>Don't have an account yet?</p>
-            <Link to={"/signup"}>Sign Up</Link>
+            <Link className="link" to={"/signup"}>Sign Up</Link>
         </div>
     )
 }

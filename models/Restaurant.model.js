@@ -11,10 +11,15 @@ const restaurantSchema = new Schema(
             longitude: [Number] 
         }, 
         // connection from restaurant to menu
-        menu: {
-            type: Schema.Types.ObjectId, 
-            ref: "menus", 
-        }
+        menus: [
+            {
+                menu: {
+                type: Schema.Types.ObjectId,
+                ref: "Menu",
+            },
+                // description: String,
+            },
+        ],
     },
 );
 

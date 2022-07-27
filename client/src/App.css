@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: #00ccbb;
+}
+
+p, .link {
+  color: #fff;
+}
+
+.Home, .Menu, .Restaurants {
+  display: flex;
+  align-items: center;
+}
