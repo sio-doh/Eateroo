@@ -19,7 +19,7 @@ export default function Login(props) {
         e.preventDefault();
         const requestBody = { email, password };
 
-        axios.post(`http://localhost:5005/auth/login`, requestBody)
+        axios.post(`/auth/login`, requestBody)
             .then((response) => {
                 // request to server's endpoint '/auth/login' returns a response 
                 // with JWT string -> response.data.authToken 
