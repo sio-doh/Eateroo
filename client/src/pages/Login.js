@@ -2,10 +2,10 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context"; 
-import { Form , Button } from 'react-bootstrap';
+// import { Form , Button } from 'react-bootstrap';
 
 
-export default function Login(props) {
+export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(undefined);
@@ -38,8 +38,9 @@ export default function Login(props) {
 
     return (
         <div className="Login">
-            <h1>Login</h1>
-
+            <br></br><br></br>
+            <h1>EATEROO</h1>
+            <br></br>
             <form onSubmit={handleLoginSubmit}>
                 <label>Email:</label>
                 <input
@@ -68,11 +69,10 @@ export default function Login(props) {
                     <Form.Label>Password:</Form.Label>
                     <Form.Input type="password" name="password" value={password} onChange={handlePassword} />
                 </Form.Group>                 
-                
-                <button variant="primary" type="submit"> Login </button>
+                <Button variant="primary" type="submit"> Login </Button>
             </Form>  */}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-
+            <br></br><br></br>
             <p>Don't have an account yet?</p>
             <Link className="link" to={"/signup"}>Sign Up</Link>
         </div>

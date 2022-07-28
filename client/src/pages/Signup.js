@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Form , Button } from 'react-bootstrap';
+// import { Form , Button } from 'react-bootstrap';
 
-export default function Signup(props) {
+export default function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
@@ -33,8 +33,9 @@ export default function Signup(props) {
 
     return (
         <div className="Signup">
-            <h1>Sign Up</h1>
-
+            <br></br><br></br>
+            <h1>EATEROO</h1>
+            <br></br>
             <form onSubmit={handleSignupSubmit}>
                 <label>Email:</label>
                 <input
@@ -80,7 +81,7 @@ export default function Signup(props) {
                 <Button variant="primary" type="submit"> Sign Up </Button>
             </Form>  */}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-
+            <br></br><br></br>
             <p>Already have an account?</p>
             <Link className="link" to={"/login"}>Login</Link>
         </div>
