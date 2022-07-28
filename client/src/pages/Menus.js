@@ -1,11 +1,8 @@
 import axios from "axios"; 
 import { useState, useEffect } from "react";
 import { useParams, Link } from 'react-router-dom'; 
+import { Button, Card } from 'react-bootstrap';
 
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-
-// import { Card, Col, Row } from 'react-bootstrap';
 
 export default function Menus() {
     const params = useParams()
@@ -31,7 +28,30 @@ export default function Menus() {
             <br></br><br></br>
             <h2> <Link className="link" to='/order-complete'>Complete Order</Link></h2> 
             <br></br>
-            <Card style={{ width: '18rem' }}>
+            {menus.map((menu) => {
+                let variant= 'Success'
+                return (
+                    <Link to={`/menus/${menu._id}`}>                
+                        <Card
+                            bg={variant.toLowerCase()}
+                            key={menu._id}
+                            text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
+                            style={{ width: '18rem' }}
+                            className="mb-2"
+                        >
+                            <Card.Header>Menu</Card.Header>
+                            <Card.Body>
+                                <Card.Title>{menu.menuName} </Card.Title> 
+                                <Card.Text>
+                                {menu.menuDescription} <br></br> {menu.menuPrice} 
+                                <br></br> {menu.menuPrice} <br></br> {menu.menuImg}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Link>
+                )
+            } )}
+            {/* <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
                     <Card.Title>Hot Wings x 12 pieces</Card.Title>
@@ -150,7 +170,7 @@ export default function Menus() {
                     </Card.Text>
                     <Button variant="primary">Select</Button>
                 </Card.Body>
-            </Card>
+            </Card> */}
         </div>
     );
 }; 
