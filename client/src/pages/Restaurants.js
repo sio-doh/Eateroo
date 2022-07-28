@@ -13,7 +13,6 @@ export default function Restaurants() {
         // get token from localStorage 
         const storedToken = localStorage.getItem("authToken");
 
-        // fetch data from beers api
         axios.get(`/api/eateroo/restaurants`, { headers: { Authorization: `Bearer ${storedToken}` }}) 
         .then(response => {
             console.log(response.data)

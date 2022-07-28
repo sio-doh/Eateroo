@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-// import { Form , Button } from 'react-bootstrap';
+import { Form , Button } from 'react-bootstrap';
 
 export default function Signup(props) {
     const [email, setEmail] = useState("");
@@ -35,7 +35,7 @@ export default function Signup(props) {
         <div className="Signup">
             <h1>Sign Up</h1>
 
-            <form onSubmit={handleSignupSubmit}>
+            {/* <form onSubmit={handleSignupSubmit}>
                 <label>Email:</label>
                 <input
                     type="email"
@@ -61,8 +61,8 @@ export default function Signup(props) {
                 />
 
                 <button type="submit">Sign Up</button>
-            </form> 
-            {/* <Form onSubmit={handleSignupSubmit}>
+            </form>  */}
+            <Form onSubmit={handleSignupSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email:</Form.Label>
                     <Form.Control type="email" name="email" value={email} onChange={handleEmail}/>
@@ -79,7 +79,7 @@ export default function Signup(props) {
                 </Form.Group>
                 
                 <Button variant="primary" type="submit"> Sign Up </Button>
-            </Form>  */}
+            </Form> 
             {errorMessage && <p className="error-message">{errorMessage}</p>}
 
             <p>Already have an account?</p>
