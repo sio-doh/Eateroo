@@ -40,25 +40,6 @@ export default function Login(props) {
         <div className="Login">
             <h1>Login</h1>
 
-            {/* <form onSubmit={handleLoginSubmit}>
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={handleEmail}
-                />
-
-                <label>Password:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={handlePassword}
-                />
-
-                <button type="submit">Login</button>
-            </form> */}
             <Form onSubmit={handleLoginSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email:</Form.Label>

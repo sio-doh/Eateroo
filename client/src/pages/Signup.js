@@ -35,33 +35,6 @@ export default function Signup(props) {
         <div className="Signup">
             <h1>Sign Up</h1>
 
-            {/* <form onSubmit={handleSignupSubmit}>
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={handleEmail}
-                />
-
-                <label>Password:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={handlePassword}
-                />
-
-                <label>Name:</label>
-                <input
-                    type="text"
-                    name="name"
-                    value={name}
-                    onChange={handleName}
-                />
-
-                <button type="submit">Sign Up</button>
-            </form>  */}
             <Form onSubmit={handleSignupSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email:</Form.Label>
