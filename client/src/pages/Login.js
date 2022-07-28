@@ -40,19 +40,37 @@ export default function Login(props) {
         <div className="Login">
             <h1>Login</h1>
 
-            <Form onSubmit={handleLoginSubmit}>
+            <form onSubmit={handleLoginSubmit}>
+                <label>Email:</label>
+                <input
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={handleEmail}
+                />
+
+                <label>Password:</label>
+                <input
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={handlePassword}
+                />
+
+                <button type="submit">Login</button>
+            </form>
+            {/* <Form onSubmit={handleLoginSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email:</Form.Label>
                     <Form.Input type="email" name="email" value={email} onChange={handleEmail} />
                 </Form.Group>
-
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password:</Form.Label>
                     <Form.Input type="password" name="password" value={password} onChange={handlePassword} />
                 </Form.Group>                 
                 
-                <Button variant="primary" type="submit"> Login </Button>
-            </Form> 
+                <button variant="primary" type="submit"> Login </button>
+            </Form>  */}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
 
             <p>Don't have an account yet?</p>
