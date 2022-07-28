@@ -35,19 +35,11 @@ router.get("/restaurants/:id", (req, res, next) => {
   console.log("eateroo number two??")
   Restaurant.findById(req.params.id)
     .then(restaurant => { 
-      Menus.findById(req.params.id) 
-        .then(menus => {         
-          if (!menus) {
-            res.status(404).json(menus)
-          } else {
-            res.status(200).json(menus)
-          }
-        })          
-      if (!restaurant) {
-        res.status(404).json(restaurant)
-      } else {
-        res.status(200).json(restaurant)
-      }
+        if (!restaurant) {
+          res.status(404).json(restaurant)
+        } else {
+          res.status(200).json(restaurant)
+        }
     })
 }); 
 

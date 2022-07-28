@@ -7,18 +7,19 @@ import { Button, Card } from 'react-bootstrap';
 export default function Menus() {
     const params = useParams()
     const id = params.id 
-    const [menus, setMenus] = useState([]);  
+    const [restaurant, setRestaurant] = useState([]);  
 
     useEffect(() => {
+        console.log("HELLO WORLD")
         // get token from localStorage 
         const storedToken = localStorage.getItem("authToken");
         
-        axios.get(`/api/eateroo/menus/${id}`, { headers: { Authorization: `Bearer ${storedToken}` }}) 
+        axios.get(`/api/eateroo/restaurants/${id}`, { headers: { Authorization: `Bearer ${storedToken}` }}) 
         .then((response) => {
-            console.log(response.data)
+            console.log("HELLO", response.data)
             // set state of characters
-            const oneMenu = response.data; 
-            setMenus(oneMenu);
+            const restaurant = response.data; 
+            setRestaurant(restaurant);
         })
         .catch(error => console.log(error))
     }, [])
@@ -28,7 +29,7 @@ export default function Menus() {
             <br></br><br></br>
             <h2> <Link className="link" to='/order-complete'>Complete Order</Link></h2> 
             <br></br>
-            {menus.map((menu) => {
+            {restaurant?.menus.map((menu) => {
                 let variant= 'Success'
                 return (
                     <Link to={`/menus/${menu._id}`}>                
@@ -43,7 +44,7 @@ export default function Menus() {
                             <Card.Body>
                                 <Card.Title>{menu.menuName} </Card.Title> 
                                 <Card.Text>
-                                {menu.menuDescription} <br></br> {menu.menuPrice} 
+                                {menu.menuDescription} 
                                 <br></br> {menu.menuPrice} <br></br> {menu.menuImg}
                                 </Card.Text>
                             </Card.Body>
