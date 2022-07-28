@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Form , Button } from 'react-bootstrap';
+// import { Form , Button } from 'react-bootstrap';
 
-export default function Signup(props) {
+export default function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
@@ -33,9 +33,10 @@ export default function Signup(props) {
 
     return (
         <div className="Signup">
-            <h1>Sign Up</h1>
-
-            {/* <form onSubmit={handleSignupSubmit}>
+            <br></br><br></br>
+            <h1>EATEROO</h1>
+            <br></br>
+            <form onSubmit={handleSignupSubmit}>
                 <label>Email:</label>
                 <input
                     type="email"
@@ -61,13 +62,12 @@ export default function Signup(props) {
                 />
 
                 <button type="submit">Sign Up</button>
-            </form>  */}
-            <Form onSubmit={handleSignupSubmit}>
+            </form> 
+            {/* <Form onSubmit={handleSignupSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email:</Form.Label>
                     <Form.Control type="email" name="email" value={email} onChange={handleEmail}/>
                 </Form.Group>
-
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password:</Form.Label>
                     <Form.Control type="password" name="password" value={password} onChange={handlePassword} />
@@ -79,9 +79,9 @@ export default function Signup(props) {
                 </Form.Group>
                 
                 <Button variant="primary" type="submit"> Sign Up </Button>
-            </Form> 
+            </Form>  */}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-
+            <br></br><br></br>
             <p>Already have an account?</p>
             <Link className="link" to={"/login"}>Login</Link>
         </div>

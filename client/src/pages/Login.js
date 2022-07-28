@@ -2,10 +2,10 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context"; 
-import { Form , Button } from 'react-bootstrap';
+// import { Form , Button } from 'react-bootstrap';
 
 
-export default function Login(props) {
+export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(undefined);
@@ -19,7 +19,7 @@ export default function Login(props) {
         e.preventDefault();
         const requestBody = { email, password };
 
-        axios.post(`http://localhost:5005/auth/login`, requestBody)
+        axios.post(`/auth/login`, requestBody)
             .then((response) => {
                 // request to server's endpoint '/auth/login' returns a response 
                 // with JWT string -> response.data.authToken 
@@ -38,9 +38,10 @@ export default function Login(props) {
 
     return (
         <div className="Login">
-            <h1>Login</h1>
-
-            {/* <form onSubmit={handleLoginSubmit}>
+            <br></br><br></br>
+            <h1>EATEROO</h1>
+            <br></br>
+            <form onSubmit={handleLoginSubmit}>
                 <label>Email:</label>
                 <input
                     type="email"
@@ -58,22 +59,20 @@ export default function Login(props) {
                 />
 
                 <button type="submit">Login</button>
-            </form> */}
-            <Form onSubmit={handleLoginSubmit}>
+            </form>
+            {/* <Form onSubmit={handleLoginSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email:</Form.Label>
                     <Form.Input type="email" name="email" value={email} onChange={handleEmail} />
                 </Form.Group>
-
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password:</Form.Label>
                     <Form.Input type="password" name="password" value={password} onChange={handlePassword} />
                 </Form.Group>                 
-                
                 <Button variant="primary" type="submit"> Login </Button>
-            </Form> 
+            </Form>  */}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-
+            <br></br><br></br>
             <p>Don't have an account yet?</p>
             <Link className="link" to={"/signup"}>Sign Up</Link>
         </div>

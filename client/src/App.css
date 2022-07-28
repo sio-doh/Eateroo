@@ -45,7 +45,7 @@ p, .link {
   color: #fff;
 }
 
-.Home, .Menu, .Restaurants {
+.Home, .Menu, .Restaurants, .eaterooDriver {
   display: flex;
   align-items: center;
 }

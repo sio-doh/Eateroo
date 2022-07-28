@@ -8,10 +8,8 @@ export default function CartView(props) {
 
     useEffect(() => {
         const requestBody = { menus };
-
         // get token from localStorage 
         const storedToken = localStorage.getItem("authToken");
-
         // send token through request "Authorization" Headers 
         axios.post(`/api/eateroo`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
         .then((response) => {
@@ -25,8 +23,7 @@ export default function CartView(props) {
     return (
         <div>
             <br></br><br></br><br></br>
-            <h2>Shopping Cart.</h2>
-
+            <h2>Shopping Cart</h2>
         </div>
     );
 };
